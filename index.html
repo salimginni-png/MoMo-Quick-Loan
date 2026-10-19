@@ -752,6 +752,13 @@
     function showLanguageOverlay() {
       document.getElementById('langOverlay').classList.add('show');
       document.getElementById('app').style.visibility = 'hidden';
+
+      // Pre-highlight the current saved language (if any)
+      document.querySelectorAll('.lang-option').forEach(btn => {
+        const isCurrent = btn.getAttribute('data-lang') === currentLang;
+        btn.style.borderColor = isCurrent ? 'rgba(255, 215, 0, 0.5)' : '';
+        btn.style.background = isCurrent ? 'rgba(255, 215, 0, 0.10)' : '';
+      });
     }
 
     function hideLanguageOverlay() {
@@ -943,13 +950,13 @@
     //  INIT
     // ═══════════════════════════════════════════════
     document.addEventListener('DOMContentLoaded', () => {
-      // If user already picked a language before, use it; else show overlay
+      // ✅ Always show the language overlay on every load / refresh.
+      // Apply the previously saved language first so the overlay itself
+      // is already in the right language when it appears.
       if (currentLang && TRANSLATIONS[currentLang]) {
         applyTranslations();
-        hideLanguageOverlay();
-      } else {
-        showLanguageOverlay();
       }
+      showLanguageOverlay();
 
       if (document.getElementById('wSlider')) {
         updateCalculator();
